@@ -1,1 +1,6 @@
-# Python-Project-1
+# Scrape the world
+
+
+getting started 
+cd backend
+run flask run
