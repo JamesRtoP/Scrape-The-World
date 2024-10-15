@@ -7,6 +7,9 @@ from markupsafe import escape
 from flask import url_for 
 #supposedly better
 
+from flask import render_template
+#templates in flask via jinja2
+
 @app.route("/")#this creates a new page on the website
 #if you go to the url/ it will bring you to this page
 def index():
@@ -26,6 +29,12 @@ def home():
 @app.route("/user/<username>")
 def display_profile(username):
     return f"User {escape(username)}"
+
+
+#Flask templates through jinja2 #thus the templates folder in backend
+@app.route('/template/<t>')
+def tem(t):
+    return render_template('hello.html', person=t)
 
 #print(url_for('home'))
 #should work but doesn't
