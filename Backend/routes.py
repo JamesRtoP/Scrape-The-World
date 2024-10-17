@@ -68,12 +68,26 @@ def indexPage():
     header = "<h1>Welcome To Scrape The World</h1>"
     learningGoals = "<p1>The learning goals for this project are to learn how Flask works, then the parellel website thing, then eventually to learn webscraping </p1>"
     link = '<p>Link to <a href="user">User</a> page</p>'#we got links now?
+    
+    
+    
     return header + learningGoals + link
 
-@app.latest("/late")
-def latest():
-    
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html') 
 
+
+@app.route("/late")
+def late():
+    me = '<h1 style = "font-family: times new roman;"> Asa is lame<br><hr></h1>'
+    return me + render_template('late.html')
+    #return '<h1>Hello World!<br></h1>' + '<h2>Hello World!<br></h2>' + '<h3>Hello World!<br></h3>' + '<h4>Hello World!<br></h4>' + '<h5>Hello World!<br></h5>' + '<h6>Hello World!<br></h6>'
+
+
+
+#"<img src = \"./static/South_Spirits.png\" alt = \"South Spirits Logo\" >"
+#image
 
 #everything below here is a little hellish
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html><!--Defines the document in HTML 5.0-->
+
+<html lang="en"><!--start boundry for everything-->
+<!--HTML is case insensitive-->
+
+<!--Two types of tags
+Paired Tags have opening <> and closing </> tags
+Empty tags self close and don't need a closing tag
+-->
+
+<!-- Tag examples
+<b> bold </b>
+<h1>Header </h1>
+<p1>Paragraph </p1>
+
+<br> carrige return
+<hr> horizontal break
+-->
+
+<!-- Extra tag edits: I do not know how to chain these yet
+ (i.e. style) these go inside tags <h1 style="color:green;"> Wassup </h1>
+style=
+    "text-align:center;" #aligns text to the center of the page
+    "color:green;" sets the color of the text
+    "font-family: Impact;"//changes font 
+-->
+
+<!--Special HTML stough
+    dropdown menu
+    <select name="Courses Titles" id="myCourses">
+        <option value="C++">c++</option>
+        <option value="Placement">Placement</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+    </select>
+
+-->
+
+<!--HTML Document breakdown
+Head & Body
+Head: HTML document information including stuff i.e. title, CSS, scripts, statics
+Body: What is displayed
+-->
+
+<head><!--head is information about the html document  -->
+    <title> <!--What is displayed to -->
+        Default HTML page layout
+    </title>
+    <meta charset="utf-8"> <!--Which character set to use, i.e. which characters are recognised-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+
+
+<body><!--What is actually being displayed-->
+
+    <div>
+    
+        <h1>Hello, {{ name }}!</h1>
+    
+        <p>Change the name in the <em>browser address bar</em>
+            and reload the page.</p>
+    
+    </div>
+    
+</body>
+
+</html> <!--end outer boundry-->
