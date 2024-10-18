@@ -80,7 +80,7 @@ def gallery():
 
 @app.route("/late")
 def late():
-    me = '<h1 style = "font-family: times new roman;"> Asa is lame<br><hr></h1>'
+    me = '<h1 style = "font-family: times new roman; color: cyan"> Asa is lame<br><hr></h1>'
     return me + render_template('late.html')
     #return '<h1>Hello World!<br></h1>' + '<h2>Hello World!<br></h2>' + '<h3>Hello World!<br></h3>' + '<h4>Hello World!<br></h4>' + '<h5>Hello World!<br></h5>' + '<h6>Hello World!<br></h6>'
 

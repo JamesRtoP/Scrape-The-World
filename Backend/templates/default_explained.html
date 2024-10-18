@@ -3,18 +3,30 @@
 <html lang="en"><!--start boundry for everything-->
 <!--HTML is case insensitive-->
 
-<!--Two types of tags
+<!--Types of tags
 Paired Tags have opening <> and closing </> tags
 Empty tags self close and don't need a closing tag
 -->
 
-<!-- Tag examples
+<!-- Addative tag examples //ie tags that adds something to the page directly
+<head>Where HTML documentations info is stored (see below) </head>
+<body>Where things that are going to be output to the page are stored</body>
+<title>Stores the title of the page i.e. what is stored on the page's tab </title>
 <b> bold </b>
 <h1>Header </h1>
 <p1>Paragraph </p1>
+<a href= "https://www.websitename.com"> Text holding the link </a> - Links
+
+
 
 <br> carrige return
 <hr> horizontal break
+<meta ...> effects meta data and a lot of vital HTML information, still not fully understood
+    <meta charset = "UTF-8"> Selects the set of acceptable characters
+    <meta name = "viewport"> currently confused on this one but it should select a metadata attribute
+    <meta content = "..."
+
+
 -->
 
 <!-- Extra tag edits: I do not know how to chain these yet
@@ -22,11 +34,11 @@ Empty tags self close and don't need a closing tag
 style=
     "text-align:center;" #aligns text to the center of the page
     "color:green;" sets the color of the text
-    "font-family: Impact;"//changes font 
+    "font-family: times new roman;"//changes font 
 -->
 
 <!--Special HTML stough
-    dropdown menu
+dropdown menu
     <select name="Courses Titles" id="myCourses">
         <option value="C++">c++</option>
         <option value="Placement">Placement</option>
@@ -34,11 +46,34 @@ style=
         <option value="Python">Python</option>
     </select>
 
+    <img src = "<filepath and name of file" alt = "image description">
+
+Tables
+    <ul> Unordered, bullet points
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>    
+    </ul>
+
+    <ol> ordered, numbered
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ol>
+
+    <dl> definition, arranged like a dictionary - not sure what that means
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </dl>
+
+
 -->
 
 <!--HTML Document breakdown
 Head & Body
 Head: HTML document information including stuff i.e. title, CSS, scripts, statics
+Head: if you set the style of someting in head, it will keep that change throughout the document, must use curly braces
 Body: What is displayed
 -->
 
@@ -49,6 +84,15 @@ Body: What is displayed
     <meta charset="utf-8"> <!--Which character set to use, i.e. which characters are recognised-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+
+
+        
+        body{
+            color:hotpink; 
+        }
+    </style><!--sets the default color fo text to hot pink--> 
+
 </head>
 
 
