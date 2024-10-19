@@ -84,6 +84,9 @@ def late():
     return me + render_template('late.html')
     #return '<h1>Hello World!<br></h1>' + '<h2>Hello World!<br></h2>' + '<h3>Hello World!<br></h3>' + '<h4>Hello World!<br></h4>' + '<h5>Hello World!<br></h5>' + '<h6>Hello World!<br></h6>'
 
+@app.route("/default")
+def default():
+    return render_template('default_explained.html')
 
 
 #"<img src = \"./static/South_Spirits.png\" alt = \"South Spirits Logo\" >"

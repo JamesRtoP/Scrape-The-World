@@ -1,3 +1,5 @@
+<!-- This is my HTML cheat sheet, everything I know about html goes in this document-->
+
 <!DOCTYPE html><!--Defines the document in HTML 5.0-->
 
 <html lang="en"><!--start boundry for everything-->
@@ -35,6 +37,8 @@ style=
     "text-align:center;" #aligns text to the center of the page
     "color:green;" sets the color of the text
     "font-family: times new roman;"//changes font 
+
+
 -->
 
 <!--Special HTML stough
@@ -67,20 +71,123 @@ Tables
         <li>List item 3</li>
     </dl>
 
+tables
+    <table>
+        <thead> table header
+            <tr> table row
+                <th>item header 1</th>
+                <th>item header 2</th>
+                <th>item header 3</th>
+            </tr>
+            <tr>
+                <td>item 1,1</td> 
+                <td>item 1,2</td>  
+                <td>item 1,3</td>
+            </tr>
+            <tr>
+                <td>item 2,1</td> 
+                <td>item 2,2</td>  
+                <td>item 2,3</td>
+            </tr>
+        </thead>
+        <tbody> table body
+        
+        </tbody>
+    </table>
+
+    <style>//either in head or on a case by case basis
+        table{
+            border-collapse: collapse; no idea
+            width: 100% - 100% covers full page, can be set tp PX value, but cannot be shrunk past a certain point depending on word size
+        }
+        th, td 
+        {
+        
+        
+        }
+        th 
+        {
+        }
+    </style>
 
 -->
 
 <!--HTML Document breakdown
 Head & Body
 Head: HTML document information including stuff i.e. title, CSS, scripts, statics
-Head: if you set the style of someting in head, it will keep that change throughout the document, must use curly braces
+Head: if you set the style of someting in head, it will keep that change throughout the document, must use curly braces, list together with commas before curly bracket
 Body: What is displayed
 -->
 
+<!--Head
+<head>
+    <style>
+        
+    </style>
+
+
+</head>
+
+
+-->
+
+<!--Semantics
+To use or to not to use
+It looks like different webpages can break if you use semantics
+But it makes websites more accesable for those who need it
+It also helps with search engine optimization (SEO)
+I should probably know how to do both
+
+<header>Top of something usually has a <h1> </h1>, a logo, or authorship info. Sometimes places in an article
+    <h1>Main idea</h1>
+    <p>one sentence intro</p>
+</header>
+
+<article> independent content, stands alone without constext
+    <h1>Header</h1>
+    <p>Explenation</p>
+</article>
+
+<section> It seems like a section is really similar to an article, except a section can depend a little on what's around it
+    <h1>Header</h1>
+    <p>Explenation</p>
+
+    <h1>Header</h1>
+    <p>Explenation</p>
+</section>
+
+Article and section can be nested in any order
+
+<aside> A tangent from nearby information, think like a sidebar, figuartively or litteraly
+<h1>Fun fact</h1>
+<p1>Fun fact description</p1>
+</aside>
+    
+<footer>a footer for a page,section, article or who knows, maybe something else
+    <p>Copyright</p>
+    <a>Related Link</a>
+</footer>Often contains authorship, copyright, contact, related documents
+
+<nav> a set of major navigation links, very handy for disabled users
+    <a>Homepage</a>
+    <a>Nextpage</a>
+</nav>
+
+<figure> for a self contained, img or gif or type of outside resource
+    <img>
+    <figcaption> describes img </figcaption>
+</figure>
+
+<figcaption>caption of a figure
+    <p1>Description of figure</p1>
+</figcaption>can be placed first or last in a figure
+-->
+
+
 <head><!--head is information about the html document  -->
-    <title> <!--What is displayed to -->
+    <title> 
         Default HTML page layout
-    </title>
+    </title><!--What is displayed to -->
     <meta charset="utf-8"> <!--Which character set to use, i.e. which characters are recognised-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
@@ -88,8 +195,24 @@ Body: What is displayed
 
 
         
-        body{
-            color:hotpink; 
+        
+
+        body
+        {
+            color: black;
+        }
+        table
+        {
+            border-collapse: collapse;
+            width: 400px;
+        }
+        th, td 
+        {
+            border: 1px solid black;
+        }
+        th 
+        {
+            background-color: darkgrey;
         }
     </style><!--sets the default color fo text to hot pink--> 
 
@@ -99,14 +222,39 @@ Body: What is displayed
 
 <body><!--What is actually being displayed-->
 
-    <div>
-    
-        <h1>Hello, {{ name }}!</h1>
-    
-        <p>Change the name in the <em>browser address bar</em>
-            and reload the page.</p>
-    
-    </div>
+    <h3>Drop Down Selection</h3>
+    <select name="Test Me" id="testMe">
+        <option value="1">Print 1</option>
+        <option value="2">Print 2</option>
+        <option value="3">Print 3</option>
+        <option value="4">Print 4</option>
+    </select>
+    <br>
+    <h2>Lists<br></h2>
+    <h3>Unordered</h3>
+    <ul>
+        <li>James</li>
+        <li>Asa</li>
+        <li>Dallas</li>
+    </ul>
+    <h2>Tables<br></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Eye Color</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>James R-P</td>
+                <td>Green</td>
+                <td>error</td>
+                <td>Sheeeit</td>
+            </tr>
+        </tbody>
+    </table>
     
 </body>
 
