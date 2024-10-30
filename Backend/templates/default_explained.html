@@ -31,12 +31,18 @@ Empty tags self close and don't need a closing tag
 
 -->
 
-<!-- Extra tag edits: I do not know how to chain these yet
+
+<!-- THIS IS A BAD WAY TO USE IT: USE SEMANTICS OR DIV 
+Extra tag edits: I do not know how to chain these yet
  (i.e. style) these go inside tags <h1 style="color:green;"> Wassup </h1>
 style=
     "text-align:center;" #aligns text to the center of the page
     "color:green;" sets the color of the text
     "font-family: times new roman;"//changes font 
+Chaining example:
+    "font-family: times new roman; color: cyan"
+    "background-color: lightgray"
+    "float: right" aligns text to the ride side of the bounding box
 
 
 -->
@@ -131,6 +137,14 @@ Body: What is displayed
 
 -->
 
+<!--Semantics vs div
+Both 
+    These help keep style consistant
+
+div is just a total general tag for all 
+
+-->
+
 <!--Semantics
 To use or to not to use
 It looks like different webpages can break if you use semantics
@@ -181,6 +195,26 @@ Article and section can be nested in any order
 <figcaption>caption of a figure
     <p1>Description of figure</p1>
 </figcaption>can be placed first or last in a figure
+
+<details>
+Additional details that can be toggled
+</details>
+
+<summary>
+    visible header for details
+</summary>
+
+<mark>
+    highlighted or differentiated text
+</mark>
+
+<time> 
+    gives a time
+</time>
+
+<main>
+    main portion of the page
+</main
 -->
 
 
@@ -214,7 +248,7 @@ Article and section can be nested in any order
         {
             background-color: darkgrey;
         }
-    </style><!--sets the default color fo text to hot pink--> 
+    </style><!--pre-setting stype for tables--> 
 
 </head>
 
@@ -222,7 +256,14 @@ Article and section can be nested in any order
 
 <body><!--What is actually being displayed-->
 
-    <h3>Drop Down Selection</h3>
+    <!--Nav example-->
+    <nav>
+        <a href = "/home" >HOME</a>
+        <a href = "/gallery" >GALLERY</a>
+
+    </nav>
+
+    <h3>Drop Down Selection</h3> <!-- dropdown example-->
     <select name="Test Me" id="testMe">
         <option value="1">Print 1</option>
         <option value="2">Print 2</option>
@@ -230,14 +271,20 @@ Article and section can be nested in any order
         <option value="4">Print 4</option>
     </select>
     <br>
-    <h2>Lists<br></h2>
+
+    <h2>Lists<br></h2><!--List example-->
     <h3>Unordered</h3>
-    <ul>
+    <aside style = "font-family: times new roman; background-color: lightgray; width: 30%; float:right;"><!--asside example single-->
+        <p1>Asside, Wassup, my name is James. I am tired. Duty is slowly melting all my effor. So much talking, I would like quiet very much, very very much</p1>
+    </aside>
+    <ul style = "background-color: lightgray; width: 30%;">
         <li>James</li>
         <li>Asa</li>
         <li>Dallas</li>
     </ul>
-    <h2>Tables<br></h2>
+
+    
+    <h2 style = "background-color: red; width: 100%;">Tables</h2> <!--table example-->
     <table>
         <thead>
             <tr>
@@ -255,7 +302,57 @@ Article and section can be nested in any order
             </tr>
         </tbody>
     </table>
+
+    <!--Aside example double-->
+    <aside style = "font-family: times new roman; background-color: grey; width: 10%; float:right;">
+        <p1>Asides/text floated right stacks</p1>
+    </aside>
+    <aside style = "font-family: times new roman; background-color: lightgray; width: 10%; float:right;">
+        <p1>Asides/text floated right stacks</p1>
+    </aside>
     
+    <!--Article Example-->
+    <article style = "background-color: lightgray; width: 45%">
+        <header><!--Header Example-->
+            <h3>
+                Bebop
+            </h3>
+        </header>
+        <p3> 
+            <p1>I quite enjoy bebop, I find it very interesting that it was almost purposefully developed to show off skill. Also I though</p1>
+            <mark style = "background-color: aqua;"> <!-- mark example-->
+                <p1>Charlie Parker</p1>
+            </mark>
+            <p1>was pretty damn cool.</p1>
+        </p3>
+    </article>
+
+
+    <aside style = "float: right; width : 20%">
+        <figure><!--figure example-->
+            <img src = "./static/South_Spirits.png" alt = "South Spirits Logo" width = 100% >
+            <figurecaption> Look at this neat logo I designed</figurecaption>
+        </figure>
+
+    </aside>
+
+    <details><!--detail example-->
+        <summary style = "width : 25%; height: 20px"> <!-- summary example-->
+            Learn more about James?
+        </summary>
+        That's kind but unneccesary
+    </details>
+
+
+
+    
+    <!--Footer Example-->
+    <footer>
+    <p4><br><br><br>Contact Me At:<br></p4>
+    <p5>jaymes@jaymes.com <br></p5>
+    <p5>(jay)jay-jaym</p5>
+    </footer>
+
 </body>
 
 </html> <!--end outer boundry-->
