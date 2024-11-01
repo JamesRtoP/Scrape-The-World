@@ -71,7 +71,7 @@ def indexPage():
     
     
     
-    return header + learningGoals + link
+    return render_template('home.html')
 
 @app.route('/gallery')
 def gallery():
