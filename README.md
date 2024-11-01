@@ -21,3 +21,9 @@ Resources I've used
     Python Beginners guide -- helped with what Flask seemed to brush over, I only found it because I was very confused on templates -- https://python-adv-web-apps.readthedocs.io/en/latest/flask3.html
     Geeksforgeeks Introduction to HTML CSS guide --  filled in most of the gaps that the Python Beginners guide and Flask Quickstart guide left in my html learning path -- https://www.geeksforgeeks.org/introduction-to-html-css-learn-to-design-your-first-website-in-just-1-week/?ref=previous_article
     I also used W3schools.com for alternate definition of html items
+
+What have I learned, or begun learning
+    Flask: Good idea of the basics
+    Python: very brief understanding
+    HTML: Feel like I know most of the basics
+    CSS: No idea
