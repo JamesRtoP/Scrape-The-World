@@ -33,7 +33,6 @@ Empty tags self close and don't need a closing tag
 
 
 <!-- THIS IS A BAD WAY TO USE IT: USE SEMANTICS OR DIV 
-Extra tag edits: I do not know how to chain these yet
  (i.e. style) these go inside tags <h1 style="color:green;"> Wassup </h1>
 style=
     "text-align:center;" #aligns text to the center of the page
@@ -217,6 +216,13 @@ Additional details that can be toggled
 </main
 -->
 
+<!--Classess, ID's, and Elements in HTML
+An element is just an instance of a tag, ie div, h1
+An ID is specific to one element
+A class can be applied to multiple elements
+-->
+
+<!--restart to access new static files-->
 
 <head><!--head is information about the html document  -->
     <title> 
@@ -231,8 +237,9 @@ Additional details that can be toggled
         
         
 
-        body
+        body /*this is an element selector in CSS */
         {
+         /*This is a comment in CSS*/   
             color: black;
         }
         table
@@ -240,7 +247,7 @@ Additional details that can be toggled
             border-collapse: collapse;
             width: 400px;
         }
-        th, td 
+        th, td /*group selector example*/
         {
             border: 1px solid black;
         }
@@ -248,6 +255,52 @@ Additional details that can be toggled
         {
             background-color: darkgrey;
         }
+
+        #textblock /* id selector in CSS*/
+        {
+            width: 15%;
+            margin: 25px;
+            background-color: antiquewhite;
+        }
+
+        .highlight{ /*class selector*/
+            color:white;
+            background-color: black;
+            
+        }
+
+        *{/*universal selector*/
+
+            margin :0
+        }
+
+        a:link/*Pseudo-class selector*/
+        {/*change if mouse is over*/
+            color:rgb(51,102,204);
+        }
+
+        a:visited
+        {
+            color:rgb(121,92,178)
+        }
+
+        a:hover
+        {/*change if mouse is over*/
+            color:coral
+        }
+
+        [style *= "aqua"]/*attribute selector*/
+        {
+            color:rgb(181, 21, 255)
+        }
+
+        p1::selection/*psuedo attribute selector*/
+        {
+            color:chocolate;
+            background-color: chartreuse;
+        }
+
+
     </style><!--pre-setting stype for tables--> 
 
 </head>
@@ -284,7 +337,7 @@ Additional details that can be toggled
     </ul>
 
     
-    <h2 style = "background-color: red; width: 100%;">Tables</h2> <!--table example-->
+    <h2 style = "background-color: grey; width: 100%; padding: 5px; width:25%">Tables</h2> <!--table example-->
     <table>
         <thead>
             <tr>
@@ -335,6 +388,15 @@ Additional details that can be toggled
         </figure>
 
     </aside>
+
+    <div id = "textblock">
+        Yo my name is, what my name is, who my name
+        is slicka slicka slim shady, what my name is 
+        mamamamamma sammmma ssammmsmsmm
+        samsmams 
+        I <mark class = "highlight">dont wanna</mark> say any wors <!--example of Class selector-->
+
+    </div>
 
     <details><!--detail example-->
         <summary style = "width : 25%; height: 20px"> <!-- summary example-->
