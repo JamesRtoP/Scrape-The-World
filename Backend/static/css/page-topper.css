@@ -1,11 +1,10 @@
-
-
 body
 {
     background: rgb(243, 243, 243);
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 .topper
 {
@@ -20,9 +19,9 @@ body
     float:left;
 }
 
-a:hover,a p1:hover, a img:hover
+header a p1:hover
 {/*change if mouse is over*/
-    color:grey;
+    opacity: 0.5;
 }
 
 

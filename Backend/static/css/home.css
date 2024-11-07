@@ -1,56 +1,6 @@
 
 
-body
-{
-    background: rgb(243, 243, 243);
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
-.topper
-{
-    height: 4vh;
-    /*border: 0.3vh solid black;*/
-}
-
-
-
-[class *= "topper-column"]
-{
-    float:left;
-}
-
-a:hover,a p1:hover, a img:hover
-{/*change if mouse is over*/
-    color:grey;
-}
-
-
-[class *= "topper-column-nav"]
-{
-    color: black;
-    text-decoration: none;
-    background-color: whitesmoke;
-    border: 0.3vh solid black;
-    border-right :0;
-    font-size: 2.65vh;text-align:center;
-    padding-left: 0.5vh;
-    padding-right: 0.5vh;
-    padding-top: 0.25vh;
-    padding-bottom: 0.25vh;
-    font-weight:bold;
-}
-
-[class *= "topper-column-nav-first"]
-{
-    margin-left:5vh;
-}
-
-[class *= "topper-column-nav-last"]
-{
-    border-right: 0.3vh solid black;
-
-}
 
 .floor
 {
@@ -60,15 +10,27 @@ a:hover,a p1:hover, a img:hover
     text-align: center;
 }
 
+footer p1
+{
+    background-color: aquamarine;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+a+.floor-column-external-img-wrapper:hover
+{
+    opacity: 0.5;
+}
+
+
 
 [class = "floor-column-external"]
 {
-    
     text-decoration: none;
-    
-    background-color: antiquewhite;
-
 }
+
 
 [class ^= "floor-column-external-"]
 {
@@ -80,8 +42,7 @@ a:hover,a p1:hover, a img:hover
 footer a p1
 {
     text-align: center;
-    background-color: pink;
     color:black;
-    padding: 1vh;
+    padding: 0vh;
 }
 
