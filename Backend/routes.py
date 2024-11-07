@@ -71,22 +71,22 @@ def indexPage():
     
     
     
-    return render_template('home.html')
+    return render_template("page-topper.html") +render_template('home.html')
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html') 
+    return render_template("page-topper.html") + render_template('gallery.html') 
 
 
 @app.route("/late")
 def late():
     me = '<h1 style = "font-family: times new roman; color: cyan"> Asa is lame<br><hr></h1>'
-    return me + render_template('late.html')
+    return render_template("page-topper.html") + me + render_template('late.html')
     #return '<h1>Hello World!<br></h1>' + '<h2>Hello World!<br></h2>' + '<h3>Hello World!<br></h3>' + '<h4>Hello World!<br></h4>' + '<h5>Hello World!<br></h5>' + '<h6>Hello World!<br></h6>'
 
 @app.route("/default")
 def default():
-    return render_template('default_explained.html')
+    return render_template("page-topper.html") + render_template('default_explained.html')
 
 
 #"<img src = \"./static/South_Spirits.png\" alt = \"South Spirits Logo\" >"

@@ -51,37 +51,3 @@ a:hover,a p1:hover, a img:hover
     border-right: 0.3vh solid black;
 
 }
-
-.floor
-{
-    border: 0.15vh solid black;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    text-align: center;
-}
-
-
-[class = "floor-column-external"]
-{
-    
-    text-decoration: none;
-    
-    background-color: antiquewhite;
-
-}
-
-[class ^= "floor-column-external-"]
-{
-    text-decoration: none;
-    float:none;
-
-}
-
-footer a p1
-{
-    text-align: center;
-    background-color: pink;
-    color:black;
-    padding: 1vh;
-}
-
