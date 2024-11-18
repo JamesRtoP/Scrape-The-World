@@ -26,6 +26,6 @@ What have I learned, or begun learning
     Flask: Good idea of the basics
     Python: very brief understanding
     HTML: Feel like I know most of the basics
-    CSS: Confident
+    CSS: Confident, But there is simply so much out there
 
-    
+
