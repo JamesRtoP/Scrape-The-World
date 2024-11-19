@@ -69,9 +69,10 @@ def indexPage():
     learningGoals = "<p1>The learning goals for this project are to learn how Flask works, then the parellel website thing, then eventually to learn webscraping </p1>"
     link = '<p>Link to <a href="user">User</a> page</p>'#we got links now?
     
-    
-    
-    return render_template("page-topper.html") +render_template('home.html')
+    tabName = "<title> Home </title>"
+    tabIcon = "<link rel = \"icon\" href = \"./static/Insert_Logo_Here_Cropped.png\" type = \"image/x-icon\">"
+
+    return tabName + tabIcon + render_template("page-topper.html") +render_template('home.html')
 
 @app.route('/gallery')
 def gallery():
