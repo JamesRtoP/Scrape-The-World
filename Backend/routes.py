@@ -72,17 +72,17 @@ def indexPage():
     tabName = "<title> Home </title>"
     tabIcon = "<link rel = \"icon\" href = \"./static/Insert_Logo_Here_Cropped.png\" type = \"image/x-icon\">"
 
-    return tabName + tabIcon + render_template("page-topper.html") +render_template('home.html')
+    return tabName + tabIcon + render_template("page-topper.html") +render_template('footer.html')
 
 @app.route('/gallery')
 def gallery():
-    return render_template("page-topper.html") + render_template('gallery.html') 
+    return render_template("page-topper.html") + render_template('gallery.html') +render_template('footer.html')
 
 
 @app.route("/late")
 def late():
     me = '<h1 style = "font-family: times new roman; color: cyan"> Asa is lame<br><hr></h1>'
-    return render_template("page-topper.html") + render_template('late.html')
+    return render_template("page-topper.html") + render_template('late.html') + render_template('footer.html')
     #return '<h1>Hello World!<br></h1>' + '<h2>Hello World!<br></h2>' + '<h3>Hello World!<br></h3>' + '<h4>Hello World!<br></h4>' + '<h5>Hello World!<br></h5>' + '<h6>Hello World!<br></h6>'
 
 @app.route("/default")
@@ -118,7 +118,7 @@ def login():
     return render_template('login.html', error=error)
 
 
-#print(url_for('home'))
+#print(url_for('footer'))
 #should work but doesn't
 
 #HTTP Methods
