@@ -4,7 +4,7 @@ from markupsafe import escape
 #see escape import in app.py
 #calling {escape(something)} in https stops scripts from being entered as things
 
-from flask import url_for 
+from flask import url_for, render_template
 #supposedly better
 
 from flask import render_template
@@ -23,25 +23,14 @@ from flask import render_template
 def kyan():
     return "<h1> Kyan Is cool </h1>"
 
-@app.route('/home')
-def home():
-    return '<h2> Welcome to Scrape The World </h2>'
 
 #Flask templates through jinja2 #thus the templates folder in backend
-@app.route('/hello')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', person=name)
+#@app.route('/hello')
+#@app.route('/hello/<name>')
+#def hello(name=None):
+#    return render_template('hello.html', person=name)
 
 from flask import request
-
-@app.route("/user")
-def userBasePage():
-    login = "Login<br>"
-    newAccount = "Create New Account<br>"
-    return login + newAccount
-
-
 
 def sh_name(name):
     oldName = name
@@ -87,7 +76,7 @@ def late():
 
 @app.route("/default")
 def default():
-    return render_template("page-topper.html") + render_template('default_explained.html')
+    return render_template("page-topper.html") + render_template('default_explained.html')+render_template('footer.html')
 
 
 #"<img src = \"./static/South_Spirits.png\" alt = \"South Spirits Logo\" >"
@@ -117,6 +106,13 @@ def login():
     # was GET or the credentials were invalid
     return render_template('login.html', error=error)
 
+
+@app.route("/fighter-profiles")
+def Fighter_Profiles():
+    return topAndBot(render_template("fighter-profile.html", name = "John Tomas", record = "10 Wins - 10 Losses - 2 Ties", strikesLanded = "43", strikesAttempted = "88")) 
+
+def topAndBot(contentTemplate):
+    return render_template("page-topper.html") + contentTemplate + render_template('footer.html')
 
 #print(url_for('footer'))
 #should work but doesn't

@@ -1,0 +1,42 @@
+.main-content
+{
+    margin: 5% 2.5%;
+    display: grid;
+    width: 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fighter-picture
+{
+    width: 100%;
+}
+
+.fighter-description
+{
+    text-align:center;
+}
+
+figure
+{
+    margin: 0%;
+}
+
+.fighter-description-name
+{
+    margin: 2.5% 0;
+    font-size: 5vw;
+}
+
+.fighter-description-statBlock
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.fighter-description-statBlock-percent
+{
+
+}

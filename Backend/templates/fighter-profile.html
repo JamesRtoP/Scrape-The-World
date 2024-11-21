@@ -1,0 +1,34 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/fighter-profile.css">
+    <title>{{name}}</title>
+
+</head>
+
+
+
+<body ><!--What is actually being displayed-->
+    <main class = "main-content">
+        <figure>
+            <img class = "fighter-picture" src = "./static/Insert_Logo_Here_Cropped.png" alt = "Fighter Picture">
+        </figure>
+        <article class = "fighter-description">
+            <div class = "fighter-description-name"> {{name}}</div>
+            <div class = "fighter-description-record">{{record}} </div>
+            <div class = "fighter-description-statBlock">
+                <div class = fighter-description-statBlock-percent>
+                    {{strikesLanded}}/{{strikesAttempted}} = 
+                </div>
+                <div class = fighter-description-statBlock-percent>
+                    {{strikesLanded}}/{{strikesAttempted}} = 
+                </div>
+            </div>
+        </article>
+            
+
+    </main>
+</body>
+
+</html> <!--end outer boundry-->
