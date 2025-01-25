@@ -20,17 +20,22 @@ cont = open_html('figherP')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
-allBreakFast = soup.select('#Breakfast h4, #Breakfast h3')
-if False:
-    tre = soup.find("h3", "diningVenueName")
-    station1 = tre.text
-    tre = tre.find_next("h3", "diningVenueName")
-    tre = tre.find_previous('h4')
-    tre = tre.find_next("h3", "diningVenueName")
+#allBreakFast = soup.select('#Breakfast h4, #Breakfast h3')
+#if False:
+#    tre = soup.find("h3", "diningVenueName")
+#    station1 = tre.text
+#    tre = tre.find_next("h3", "diningVenueName")
+#    tre = tre.find_previous('h4')
+#    tre = tre.find_next("h3", "diningVenueName")
 
-if True:
-    tre = soup.find("div", id = "Breakfast")
-    #station1 = tre.find("h3", "diningVenueName")
+Breakfast = {}
+Lunch = {}
+Dinner = {}
+
+Brunch = {}
+
+tre = soup.find("div", id = "Breakfast")
+stationNum = tre.find("h3", "diningVenueName")
     #station1 = station1.find_next("h3", "diningVenueName")
     #pizza = tre.findAll("h3", "diningVenueName")
 
@@ -39,7 +44,10 @@ if True:
 #    print(i)
 
 line = tre.find()
-station = tre.find("h3", "diningVenueName")
+if "diningMenuItem" in line:
+
+print (line)
+#station = tre.find("h3", "diningVenueName")
 
 #foodItem = station.find_next_sibling()
 
