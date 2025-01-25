@@ -20,25 +20,65 @@ cont = open_html('figherP')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
-#breakfast = soup.select('.accordion-item h3')
-breakfast = soup.select('#Breakfast h4, #Breakfast h3')
-#breakfast = soup.select('.accordion-item h3')
+allBreakFast = soup.select('#Breakfast h4, #Breakfast h3')
+if False:
+    tre = soup.find("h3", "diningVenueName")
+    station1 = tre.text
+    tre = tre.find_next("h3", "diningVenueName")
+    tre = tre.find_previous('h4')
+    tre = tre.find_next("h3", "diningVenueName")
 
-#fighterPortrait = soup.select_one('.hero-profile__image')
-#fighterPortrait = soup.select_one('img[src *= "bodyshots"]')['src']
-#eventually I will remove 
-#fighterName = soup.select_one('.container.text-shadow h1').text.strip()
-#)
+if True:
+    tre = soup.find("div", id = "Breakfast")
+    #station1 = tre.find("h3", "diningVenueName")
+    #station1 = station1.find_next("h3", "diningVenueName")
+    #pizza = tre.findAll("h3", "diningVenueName")
 
+#allh3 = tre.find_all("h3")
+#for i in tre:
+#    print(i)
+
+line = tre.find()
+station = tre.find("h3", "diningVenueName")
+
+#foodItem = station.find_next_sibling()
+
+#nextS = nextS.find_previous_sibling()
+#allergen = foodItem.find_next_sibling()
+#unicode = str(foodItem)
+#print( unicode)
+#word = "class"
+#if word in unicode:
+#    print("yes")
+#else:
+#    print("no")
+#nextS = nextS.find_next_sibling()
+
+#.get
+#print (len(allh3))
+
+#child of h3
+#child of h4
 
 #breakFastItems =  soup.select_one('#Breakfast h3')
-breakFastItems =  soup.find(id = 'Breakfast', )
 
-print (breakFastItems)
-#print (breakfast)
-#for i in breakFastItems:
+
+#breakFastItems =  soup.find_all("h3", class_ = 'diningVenueName')#, id = 'Breakfast')
+
+#print (breakFastItems)
+#print (station)
+#print (foodItem)
+#print (allergen)
+
+
+#items = []
+#Fast = {}
+#for i in tre:
 #    print(i)
+#    #print (i.find)
 #    print("\n")
+    
+    
 
 #print(r.content[:100])
 #print("Yeah")
