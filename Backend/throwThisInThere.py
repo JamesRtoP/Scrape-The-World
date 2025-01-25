@@ -12,6 +12,13 @@ def save_html(html, path):
 def open_html(path):
     with open(path, 'rb') as f:
         return f.read()
+    
+def printL(L):
+    for i in L:
+        print (i)
+
+def handleAllergen(allergenLine):
+    return allergenLine.text
 
 url = 'https://dining.wsu.edu/southside-cafe'
 
@@ -28,26 +35,52 @@ if day == "Saturday" or day == "Sunday":
     weekday = False
 
 
+Breakfast = []
+Lunch = []
+Dinner = []
 
-Breakfast = {}
-Lunch = {}
-Dinner = {}
-
-Brunch = {}
+Brunch = []
 
 tre = soup.find("div", id = "Breakfast")
 stationNum = tre.find_all("h3", "diningVenueName")
 
+Station = {
+    "station":"",
+    "menuItems": [] 
+    }
+
+menuItem = None
+allergens = None
+
 line = tre.find_next()
 while(line != None):
+
+    lineStr = str(line)#make line a string to find which type it is
+    if "diningMenuItem" in lineStr:
+        #Station["menuItems"].append(line.text)
+        menuItem = line.text
+    elif "allergens-and-diets" in lineStr:
+        allergens = lineStr
+        foodPair = (menuItem,allergens)
+        Station["menuItems"].append(foodPair)
+        #print ()
+    elif "diningVenueName" in lineStr:
+        #print(line.text)
+        if Station["station"] != "": #if station name is not undefined, place it into breakfast
+            Breakfast.append(Station.copy())
+            Station["menuItems"] = []
+            #Station["menuItems"].append("Yeah")
+            #printL (Breakfast)
+            #print ()
+
+
+        Station["station"] = line.text
     
+
     line = line.find_next_sibling()
 
-lineStr = str(line)
-if "diningVenueName" in lineStr:
-    print("yaho")
-if "diningMenuItem" in lineStr:
-    print("yaho")
+Breakfast.append(Station)
+printL (Breakfast)
 
 
 
@@ -56,8 +89,10 @@ if "diningMenuItem" in lineStr:
 
 
 
-    #station1 = station1.find_next("h3", "diningVenueName")
-    #pizza = tre.findAll("h3", "diningVenueName")
+
+
+#station1 = station1.find_next("h3", "diningVenueName")
+#pizza = tre.findAll("h3", "diningVenueName")
 
 #allh3 = tre.find_all("h3")
 #for i in tre:
