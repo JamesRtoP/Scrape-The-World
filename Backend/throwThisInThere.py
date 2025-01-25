@@ -17,14 +17,21 @@ def printL(L):
     for i in L:
         print (i)
 
-def handleAllergen(allergenLine):
-    return allergenLine.text
+def handleAllergens(allergenLine):
+    dietary = []
+    allergen = []
+    for i in allergenLine.select(".mealTypes .requirement"):
+        dietary.append(i.text)
+    for i in allergenLine.select(".allergens .allergen"):
+        allergen.append(i.text)
+    return (dietary, allergen)
 
 url = 'https://dining.wsu.edu/southside-cafe'
 
 #r = requests.get(url)
 #save_html(r.content, 'figherP')
 cont = open_html('figherP')
+save_html(cont, 'friday')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
@@ -34,14 +41,9 @@ day = soup.select_one(".secondary.disabled.menuButton").text.split()[0]
 if day == "Saturday" or day == "Sunday":
     weekday = False
 
+mealTime = []
 
-Breakfast = []
-Lunch = []
-Dinner = []
-
-Brunch = []
-
-tre = soup.find("div", id = "Breakfast")
+tre = soup.find("div", id = "Lunch")
 stationNum = tre.find_all("h3", "diningVenueName")
 
 Station = {
@@ -56,31 +58,22 @@ line = tre.find_next()
 while(line != None):
 
     lineStr = str(line)#make line a string to find which type it is
-    if "diningMenuItem" in lineStr:
-        #Station["menuItems"].append(line.text)
+    if "diningMenuItem" in lineStr:#is menuItem
         menuItem = line.text
-    elif "allergens-and-diets" in lineStr:
+    elif "allergens-and-diets" in lineStr:#is allergen
         allergens = lineStr
-        foodPair = (menuItem,allergens)
+        foodPair = (menuItem,handleAllergens(line))
         Station["menuItems"].append(foodPair)
-        #print ()
-    elif "diningVenueName" in lineStr:
-        #print(line.text)
-        if Station["station"] != "": #if station name is not undefined, place it into breakfast
-            Breakfast.append(Station.copy())
+    elif "diningVenueName" in lineStr:#is a station
+        if Station["station"] != "": #if station name is not undefined, place it into meal (i.e breakfast lunch or dinner)
+            mealTime.append(Station.copy())
             Station["menuItems"] = []
-            #Station["menuItems"].append("Yeah")
-            #printL (Breakfast)
-            #print ()
-
-
         Station["station"] = line.text
-    
 
-    line = line.find_next_sibling()
+    line = line.find_next_sibling()#move onto next line
 
-Breakfast.append(Station)
-printL (Breakfast)
+mealTime.append(Station)
+printL (mealTime)
 
 
 
