@@ -2,12 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 #from tqdm import tdqm_notebook
 
+#saving html that has been gotten
 def save_html(html, path):
     with open(path, 'wb') as f:
         f.write(html)
 
 
-    
+#open saved html
 def open_html(path):
     with open(path, 'rb') as f:
         return f.read()
@@ -20,13 +21,13 @@ cont = open_html('figherP')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
-#allBreakFast = soup.select('#Breakfast h4, #Breakfast h3')
-#if False:
-#    tre = soup.find("h3", "diningVenueName")
-#    station1 = tre.text
-#    tre = tre.find_next("h3", "diningVenueName")
-#    tre = tre.find_previous('h4')
-#    tre = tre.find_next("h3", "diningVenueName")
+#getting just the day from soup
+weekday = True
+day = soup.select_one(".secondary.disabled.menuButton").text.split()[0]
+if day == "Saturday" or day == "Sunday":
+    weekday = False
+
+
 
 Breakfast = {}
 Lunch = {}
@@ -35,7 +36,26 @@ Dinner = {}
 Brunch = {}
 
 tre = soup.find("div", id = "Breakfast")
-stationNum = tre.find("h3", "diningVenueName")
+stationNum = tre.find_all("h3", "diningVenueName")
+
+line = tre.find_next()
+while(line != None):
+    
+    line = line.find_next_sibling()
+
+lineStr = str(line)
+if "diningVenueName" in lineStr:
+    print("yaho")
+if "diningMenuItem" in lineStr:
+    print("yaho")
+
+
+
+
+
+
+
+
     #station1 = station1.find_next("h3", "diningVenueName")
     #pizza = tre.findAll("h3", "diningVenueName")
 
@@ -43,10 +63,8 @@ stationNum = tre.find("h3", "diningVenueName")
 #for i in tre:
 #    print(i)
 
-line = tre.find()
-if "diningMenuItem" in line:
 
-print (line)
+
 #station = tre.find("h3", "diningVenueName")
 
 #foodItem = station.find_next_sibling()

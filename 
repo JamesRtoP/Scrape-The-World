@@ -1,0 +1,19 @@
+[1mdiff --git a/Backend/throwThisInThere.py b/Backend/throwThisInThere.py[m
+[1mindex 0c5a96a..ed7d89b 100644[m
+[1m--- a/Backend/throwThisInThere.py[m
+[1m+++ b/Backend/throwThisInThere.py[m
+[36m@@ -20,14 +20,6 @@[m [mcont = open_html('figherP')[m
+ [m
+ soup = BeautifulSoup(cont, 'html.parser')[m
+ [m
+[31m-#allBreakFast = soup.select('#Breakfast h4, #Breakfast h3')[m
+[31m-#if False:[m
+[31m-#    tre = soup.find("h3", "diningVenueName")[m
+[31m-#    station1 = tre.text[m
+[31m-#    tre = tre.find_next("h3", "diningVenueName")[m
+[31m-#    tre = tre.find_previous('h4')[m
+[31m-#    tre = tre.find_next("h3", "diningVenueName")[m
+[31m-[m
+ Breakfast = {}[m
+ Lunch = {}[m
+ Dinner = {}[m
