@@ -26,54 +26,65 @@ def handleAllergens(allergenLine):
         allergen.append(i.text)
     return (dietary, allergen)
 
+def fillMealTime(soup, mealTimeName):
+    mealTime = []#What will be returned, i.e. for lunch will list everything avialabe
+
+    tre = soup.find("div", id = mealTimeName)#gets the mealTime html by itself
+    Station = { #each station will have a name and a list of items at it
+    "station":"",
+    "menuItems": [] 
+    }
+
+    menuItem = None #menu food item
+    line = tre.find_next()#get first line of the meal time
+    while(line != None):
+
+        lineStr = str(line)#make line a string to find which type it is
+        if "diningMenuItem" in lineStr:#is menuItem
+            menuItem = line.text
+        elif "allergens-and-diets" in lineStr:#is allergen
+            foodPair = (menuItem,handleAllergens(line))
+            Station["menuItems"].append(foodPair)
+        elif "diningVenueName" in lineStr:#is a station
+            if Station["station"] != "": #if station name is not undefined, place it into meal (i.e breakfast lunch or dinner)
+                mealTime.append(Station.copy())#add full station to mealTime
+                Station["menuItems"] = []#clear Station
+            Station["station"] = line.text#set station name
+        line = line.find_next_sibling()#move onto next line
+
+    mealTime.append(Station)#add the last station after the loop
+    return mealTime
+
+
 url = 'https://dining.wsu.edu/southside-cafe'
 
 #r = requests.get(url)
 #save_html(r.content, 'figherP')
 cont = open_html('figherP')
-save_html(cont, 'friday')
+#save_html(cont, 'friday')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
+
 #getting just the day from soup
-weekday = True
 day = soup.select_one(".secondary.disabled.menuButton").text.split()[0]
 if day == "Saturday" or day == "Sunday":
-    weekday = False
+    Brunch = fillMealTime(soup, "Brunch")
+    printL (Brunch)
 
-mealTime = []
+else:
+    Breakfast = fillMealTime(soup, "Breakfast")
+    printL (Breakfast)
 
-tre = soup.find("div", id = "Lunch")
-stationNum = tre.find_all("h3", "diningVenueName")
 
-Station = {
-    "station":"",
-    "menuItems": [] 
-    }
 
-menuItem = None
-allergens = None
 
-line = tre.find_next()
-while(line != None):
+#stationNum = tre.find_all("h3", "diningVenueName")
 
-    lineStr = str(line)#make line a string to find which type it is
-    if "diningMenuItem" in lineStr:#is menuItem
-        menuItem = line.text
-    elif "allergens-and-diets" in lineStr:#is allergen
-        allergens = lineStr
-        foodPair = (menuItem,handleAllergens(line))
-        Station["menuItems"].append(foodPair)
-    elif "diningVenueName" in lineStr:#is a station
-        if Station["station"] != "": #if station name is not undefined, place it into meal (i.e breakfast lunch or dinner)
-            mealTime.append(Station.copy())
-            Station["menuItems"] = []
-        Station["station"] = line.text
 
-    line = line.find_next_sibling()#move onto next line
 
-mealTime.append(Station)
-printL (mealTime)
+
+
 
 
 
