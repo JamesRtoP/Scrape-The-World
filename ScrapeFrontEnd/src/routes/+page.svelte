@@ -5,7 +5,9 @@
     let string = "need to html the next bit <strong> something</strong>" + {was};
 
     let count = $state(0);
-
+    function increment() {
+		// TODO implement
+	}
 
 </script>
 
@@ -17,12 +19,12 @@
 {@html string} <!--@html tells it to double check for htmls-->
 <!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
 
-
-<button >
+<!--
+<button onclick={increment}>
     Clicked {count}
     {count === 1 ? 'time' : 'times'}
 </button>
-
+-->
 
 <!--
 <script>
