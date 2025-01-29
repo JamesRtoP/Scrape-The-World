@@ -13,18 +13,14 @@
     }
     let fived = $derived(fives.reduce((t,n) => t*n,1))
 
-    let addy = $state([1,2,3])
-    function addyey()
-    {
-        addy.push(addy.length + 1)
-    }
 
-    let count = $state(0);
-    let total = $derived(addy.reduce((t,n) => t + n, 0))
-    function increment() {
-        count++;
-		// TODO implement
-	}
+    let N = $state(0)
+    let oOfOneTotal = 2
+    let oOfLogN = $derived(Math.log(N)/Math.log(2))
+    let oOfNTotal = $derived(2*N)
+    let oOfNLogN = $derived(N*(Math.log(N)/Math.log(2)))
+    let oOfNSquaredTotal = $derived(N**2)
+    let oOfNPowTotal = $derived(2**N)
 
 </script>
 
@@ -38,23 +34,27 @@
 <!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
 
 <br>
-<button onclick={increment}>
-    Clicked {count}
-    {count === 1 ? 'time' : 'times'}
-</button>
-
-<br>
-<button onclick={addyey}>
-    AddSome 
-</button>
-<p1> {addy.join ( ' + ')} = {total} </p1>
-
-<br>
 <button onclick={fiven}>
     Five 
 </button>
 <p1> {fives.join ( ' * ')} = {fived} </p1>
 
+<br>
+<button onclick={N++}>
+N = {N}
+</button>
+<br>
+O(1) = {oOfOneTotal}
+<br>
+O(log N) = {oOfLogN}
+<br>
+O(N) = {oOfNTotal}
+<br>
+O(log N) = {oOfNLogN}
+<br>
+O(N^2) = {oOfNSquaredTotal}
+<br>
+O(2^N) = {oOfNPowTotal}
 <!--
 <script>
 let p  = 4;
