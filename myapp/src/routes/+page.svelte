@@ -50,7 +50,7 @@ O(log N) = {oOfLogN}
 <br>
 O(N) = {oOfNTotal}
 <br>
-O(log N) = {oOfNLogN}
+O(N log N) = {oOfNLogN}
 <br>
 O(N^2) = {oOfNSquaredTotal}
 <br>
