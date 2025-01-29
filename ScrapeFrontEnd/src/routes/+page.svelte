@@ -1,4 +1,7 @@
+
+<svelte:options runes={false} />
 <script>
+    
     let p =4;
     import ImportMe from './importMe.svelte'; 
     let was = "<strong>  wass up </strong>";
@@ -19,12 +22,12 @@
 {@html string} <!--@html tells it to double check for htmls-->
 <!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
 
-<!--
+
 <button onclick={increment}>
     Clicked {count}
     {count === 1 ? 'time' : 'times'}
 </button>
--->
+
 
 <!--
 <script>
