@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 #from tqdm import tdqm_notebook
 
 #saving html that has been gotten
@@ -7,11 +8,14 @@ def save_html(html, path):
     with open(path, 'wb') as f:
         f.write(html)
 
-
 #open saved html
 def open_html(path):
     with open(path, 'rb') as f:
         return f.read()
+    
+def saveAllMeal(meals):
+    with open('mealsToday.jason', 'w') as f:
+        json.dump(meals,f)
     
 def printL(L):
     for i in L:
@@ -65,17 +69,23 @@ cont = open_html('figherP')
 
 soup = BeautifulSoup(cont, 'html.parser')
 
-
+allMeals={}
 #getting just the day from soup
 day = soup.select_one(".secondary.disabled.menuButton").text.split()[0]
 if day == "Saturday" or day == "Sunday":
     Brunch = fillMealTime(soup, "Brunch")
+    Dinner = fillMealTime(soup, "Dinner")
+    allMeals = {"Brunch":Brunch,"Dinner":Dinner}
     printL (Brunch)
 
 else:
     Breakfast = fillMealTime(soup, "Breakfast")
-    printL (Breakfast)
+    Lunch = fillMealTime(soup, "Lunch")
+    Dinner = fillMealTime(soup, "Dinner")
+    allMeals = {"Breakfast" : Breakfast,"Lunch":Lunch,"Dinner":Dinner}
 
+printL (allMeals["Breakfast"])
+saveAllMeal(allMeals)
 
 
 
