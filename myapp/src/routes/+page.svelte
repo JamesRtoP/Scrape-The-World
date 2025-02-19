@@ -1,6 +1,7 @@
 
 <script>
     
+
     let was = "<strong>  wass up </strong>";
     let string = "need to html the next bit <strong> something</strong>" + {was};
 
@@ -10,6 +11,20 @@
         fives.push(fives.at(0))
         console.log("ass")
 
+    }
+
+    function fetchMeals()
+    {
+        fetch('./mealsToday.jason')
+            .then(response=> {
+                if(!response.ok){
+                    throw new Error(`Some Shit is fucked 1! Status: ${response.status} `);
+
+                }
+                return response.json();
+            })
+            .then(data=> console.log(data))
+            .catch(error=> console.error('Failed to fetch data:', error))
     }
     let fived = $derived(fives.reduce((t,n) => t*n,1))
 
@@ -22,12 +37,14 @@
     let oOfNPowTotal = $derived(2**N)
 
 
-    console.log("butt")
+    //console.log("butt")
 
     function goingCrazy()
     {
         console.log("hello")
     }
+
+
 
     function openAllDetails()
     {
@@ -46,7 +63,14 @@
             elm[i].removeAttribute("open");
         }
     }
+    import mealsToday from '../mealsToday.json';
 
+
+    
+    console.log(typeof mealsToday);
+    let x = 4;
+    
+    
 </script>
 
 <!--
@@ -88,7 +112,6 @@
     }
 
     
-
 </style>
 
 {@html string} <!--@html tells it to double check for htmls-->
