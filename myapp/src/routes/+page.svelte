@@ -63,13 +63,39 @@
             elm[i].removeAttribute("open");
         }
     }
+    function getSouthsideMenu()
+    {
+        let something = document.getElementById("southside");
+
+    }
     import mealsToday from '../mealsToday.json';
-
-
     
-    console.log(typeof mealsToday);
+    //console.log(typeof mealsToday);
     let x = 4;
+    //const southsideMenu = document.getElementsByClassName("cafe-menu-Southside");
+    let cafeString = "";
+    //let idk = mealsToday[station];
+    for (let station in Object.keys(mealsToday))
+    {
+        cafeString += station;// += "<br>";
+        for (let something in mealsToday[station])
+        {
+            cafeString += something;
+        }
+    }
+    //console.log(typeof mealsToday["Breakfast"]);
+    //let something = document.getElementsByClassName("cafe-menu");
+    for (let index in Object.keys(mealsToday))
+    {
+
+    }
+    //southsideMenu.innerHTML = cafeString;
     
+
+    Object.keys( mealsToday);
+
+    let JSONmeals = mealsToday
+    let entries = Object.entries(JSONmeals)
     
 </script>
 
@@ -77,6 +103,115 @@
  
 
 -->
+
+
+
+
+{@html string} <!--@html tells it to double check for htmls-->
+<!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
+
+<br>
+<button onclick={fiven}>
+    Five 
+</button>
+<p1> {fives.join ( ' * ')} = {fived} </p1>
+
+<br>
+<button onclick={N++}>
+N = {N}
+</button>
+<br>
+O(1) = {oOfOneTotal}
+<br>
+O(log N) = {oOfLogN}
+<br>
+O(N) = {oOfNTotal}
+<br>
+O(N log N) = {oOfNLogN}
+<br>
+O(N^2) = {oOfNSquaredTotal}
+<br>
+O(2^N) = {oOfNPowTotal}
+
+
+<br>
+
+<button onclick = {openAllDetails} type = "button"> Open </button>
+<button onclick = {closeAllDetails} type = "button"> Close </button>
+{openAllDetails()}
+
+
+<article class = c-wrapper>
+    <details>
+        <summary class = "cafe-building">Southside Cafe</summary>
+        <div class = "cafe-menu" id= "southside">
+            
+            
+        </div>
+
+    </details>
+    <details>
+        <summary class = "cafe-building">Southside Cafe</summary>
+        <div class = "cafe-menu">
+            {JSON.stringify(mealsToday)}
+        </div>
+
+    </details>
+    <details>
+        <summary class = "cafe-building">Southside Cafe</summary>
+        <div class = "cafe-menu">
+            {#each mealsToday as thing}
+            <h1>{thing}</h1>
+        {/each}
+        {#each entries as meal}
+            {#each meal as mealthing,i}
+                {#if i==0}
+                    {mealthing}
+                    <br>
+
+                        <!-- <script>
+                            let stations = Object.entries(mealthing)
+                            //let porkchop = 14
+                        </script>
+                        {stations} -->
+                {:else}
+                    {#each mealthing as station, i}
+                        <!-- {station} -->
+                        {#if i==1}
+                        {JSON.stringify(station)}
+                        {/if} 
+                        <!--
+                        <script>
+                            let foodItems =Object.entries(station);
+                        </script>
+                        {#each foodItems as foodItem}
+                            {foodItem}
+                        
+                        {/each}
+                        <br> -->
+                    {/each}
+                {/if} 
+            {/each}
+            <br>
+            <br>
+
+        {/each}        </div>
+
+    </details>
+    {cafeString}
+</article>
+<!--
+<script>
+let p  = 4;
+p = 2;
+
+let src = './South Spirits.png';
+import Ghost from './South Spirits.png';
+</script>
+
+<img src = {Ghost} alt = "Three ghosts">
+-->
+<!-- alt= "Three gravestones with ghosts behind them and the compass symbol S on the front grave"-->
 
 
 <!--CSS Here-->
@@ -113,81 +248,3 @@
 
     
 </style>
-
-{@html string} <!--@html tells it to double check for htmls-->
-<!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
-
-<br>
-<button onclick={fiven}>
-    Five 
-</button>
-<p1> {fives.join ( ' * ')} = {fived} </p1>
-
-
-
-<br>
-<button onclick={N++}>
-N = {N}
-</button>
-<br>
-O(1) = {oOfOneTotal}
-<br>
-O(log N) = {oOfLogN}
-<br>
-O(N) = {oOfNTotal}
-<br>
-O(N log N) = {oOfNLogN}
-<br>
-O(N^2) = {oOfNSquaredTotal}
-<br>
-O(2^N) = {oOfNPowTotal}
-
-
-<br>
-
-<button onclick = {openAllDetails} type = "button"> Open </button>
-<button onclick = {closeAllDetails} type = "button"> Close </button>
-
-
-
-<article class = c-wrapper>
-    <details>
-        <summary class = "cafe-building">Southside Cafe</summary>
-        <div class = "cafe-menu">
-            Slop for breakfast
-            <br>
-            slop for dinner
-        </div>
-
-    </details>
-    <details>
-        <summary class = "cafe-building">Southside Cafe</summary>
-        <div class = "cafe-menu">
-            Slop for breakfast
-            <br>
-            slop for dinner
-        </div>
-
-    </details>
-    <details>
-        <summary class = "cafe-building">Southside Cafe</summary>
-        <div class = "cafe-menu">
-            Slop for breakfast
-            <br>
-            slop for dinner
-        </div>
-
-    </details>
-</article>
-<!--
-<script>
-let p  = 4;
-p = 2;
-
-let src = './South Spirits.png';
-import Ghost from './South Spirits.png';
-</script>
-
-<img src = {Ghost} alt = "Three ghosts">
--->
-<!-- alt= "Three gravestones with ghosts behind them and the compass symbol S on the front grave"-->
