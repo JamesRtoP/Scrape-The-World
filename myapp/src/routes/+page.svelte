@@ -41,22 +41,116 @@
         let something = document.getElementById("southside");
 
     }
+    function convertMealtypeToIcon(mealtype)
+    {
+        switch(mealtype)
+        {
+            case "Vegetarian":
+                return "<img src = \"/foodIcons/Vegetarian.png\" alt = \"Vegitarian Icon\" class = \"food-icon\" title = \"Vegetarian Item\">"
+            break;
+
+            case "Vegan":
+                return "<img src = \"/foodIcons/Vegan.png\" alt = \"Vegan Icon\" class = \"food-icon\" title = \"Vegan Item\">"
+            break;
+
+            case "Halal":
+                return "<img src = \"/foodIcons/Halal.png\" alt = \"Halal Icon\" class = \"food-icon\" title = \"Halal Item\">"
+            break;
+
+            case "Healthy Option":
+                return "<img src = \"/foodIcons/Healthy Option.png\" alt = \"Healthy Option Icon\" class = \"food-icon\" title = \"Healthy Option item\" style = \"width:3.6vw\">"
+            break;
+
+            case "Gluten Friendly":
+                return "<img src = \"/foodIcons/Gluten Friendly.png\" alt = \"Gluten Friendly Icon\" class = \"food-icon\" title = \"Gluten Friendly item\" style = \"width:3.6vw\">"
+            break;
+
+            case "Allergen-Friendly":
+                return "<img src = \"/foodIcons/Allergen-Friendly.png\" alt = \"Allergen-Friendly Icon\" class = \"food-icon\" title = \"Allergen-Friendly item\" style = \"width:3.6vw\">"
+            break;
+
+            default:
+                return mealtype + ", ";
+            break;
+        }
+    }
+    function convertAllergenToIcon(mealtype)
+    {
+        switch(mealtype)
+        {
+            case "Eggs":
+                return "<img src = \"/foodIcons/Eggs.png\" alt = \"Eggs Icon\" class = \"food-icon\" title = \"Contains Eggs\">"
+            break;
+
+            case "Gluten/Wheat":
+                return "<img src = \"/foodIcons/Gluten_Wheat.png\" alt = \"Gluten/Wheat Icon\" class = \"food-icon\" title = \"Contains Gluten/Wheat\">"
+            break;
+
+            case "Milk":
+                return "<img src = \"/foodIcons/Milk.png\" alt = \"Milk Icon\" class = \"food-icon\" title = \"Contains Milk\">"
+            break;
+
+            case "Soy":
+                return "<img src = \"/foodIcons/Soy.png\" alt = \"Soy Icon\" class = \"food-icon\" title = \"Contains Soy\">"
+            break;
+
+            case "Sesame ":
+                return "<img src = \"/foodIcons/Sesame.png\" alt = \"Sesame Icon\" class = \"food-icon\" title = \"Contains Sesame\">"
+            break;
+
+            case "Fish":
+                return "<img src = \"/foodIcons/Fish.png\" alt = \"Fish Icon\" class = \"food-icon\" title = \"Contains Fish\">"
+            break;
+
+            case "Shellfish":
+                return "<img src = \"/foodIcons/Fish.png\" alt = \"Shellfish Icon\" class = \"food-icon\" title = \"Contains Shellfish\">"
+            break;
+
+            case "Pork":
+                return "<img src = \"/foodIcons/Pork.png\" alt = \"Pork Icon\" class = \"food-icon\" title = \"Contains Pork\" style = \"width:3.3vw\">"
+            break;
+
+            case "Coconut":
+                return "<img src = \"/foodIcons/Coconut.png\" alt = \"Coconut Icon\" class = \"food-icon\" title = \"Contains Coconut\" style = \"width:3.3vw\">"
+            break;
+
+            case "Peanuts":
+                return "<img src = \"/foodIcons/Nuts.png\" alt = \"Peanuts Icon\" class = \"food-icon\" title = \"Contains Peanuts\" style = \"width:3.3vw\">"
+            break;
+
+            default:
+                return mealtype + ", ";
+            break;
+        }
+    }
     import mealsToday from '../mealsToday.json';
     Object.keys( mealsToday);
-
+    
     let JSONmeals = mealsToday
     let entries = Object.entries(JSONmeals)
     //cafe string will not be sanitized, so this is an issue
     let cafeString = "";
     for (let meal in JSONmeals)
     {
-        cafeString += `<div class = "food-station"> ${meal} </div>`;
+        cafeString += `<div class = "food-meal">${meal}</div>`;
         for (let station in JSONmeals[meal])
         {   
-            cafeString += "<br>Station: "+JSONmeals[meal][station]["station"] + "<br>";
+            cafeString += `<div class = "food-station">${JSONmeals[meal][station]["station"]}</div>`;
             for(let menuItemIndex in JSONmeals[meal][station]["menuItems"])
             {
-                cafeString += JSONmeals[meal][station]["menuItems"][menuItemIndex][0]+ "<br>"
+                cafeString += `<div class = "food-item">${JSONmeals[meal][station]["menuItems"][menuItemIndex][0]}</div>`;
+                for(let mealType in JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0])
+                {
+                    //{@html convertMealtypeToIcon("Vegetarian")}
+                    //cafeString += JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0][mealType]+ ", ";
+                    cafeString += `<div class = "food-mealtype">${convertMealtypeToIcon(JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0][mealType])}</div>`;
+                }
+                cafeString+="<br>";
+                for(let allergen in JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1])
+                {
+                    //cafeString += JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1][allergen] + ", ";
+                    cafeString += `<div class = "food-allergen">${convertAllergenToIcon(JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1][allergen])}`;
+                }
             }
             //cafeString += JSONmeals[meal][station]["menuItems"][0]+ "<br>";
         }
@@ -74,18 +168,15 @@
     //southsideMenu.innerHTML = cafeString;
     
 
-    
-    
+    let src = "/foodIcons/Vegetarian.png"
+    //console.log(process.cwd())
 </script>
 
 <!--
  
 
 -->
-
-
-{@html cafeString}
-
+<!-- <img src = {src} alt = "Vegetarian Icon" class = "food-icon" title = "Vegetarian Item"> -->
 <!-- {@html string} @html tells it to double check for htmls -->
 <!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
 
@@ -94,10 +185,11 @@
 
 
 <article class = c-wrapper>
-    <details>
+    <details open>
         <summary class = "cafe-building">Southside Cafe</summary>
         <div class = "cafe-menu" id= "southside">
-            
+            {@html cafeString}
+
             
         </div>
 
@@ -105,13 +197,14 @@
     <details>
         <summary class = "cafe-building">Southside Cafe</summary>
         <div class = "cafe-menu">
-            {JSON.stringify(mealsToday)}
+            {@html cafeString}
+            <!-- {JSON.stringify(mealsToday)} -->
         </div>
 
     </details>
     <details>
         <summary class = "cafe-building">Southside Cafe</summary>
-        <div class = "cafe-menu">
+        <!-- <div class = "cafe-menu">
             {#each mealsToday as thing}
             <h1>{thing}</h1>
         {/each}
@@ -131,7 +224,8 @@
             <br>
             <br>
 
-        {/each}        </div>
+        {/each}        </div> -->
+        {@html cafeString}
 
     </details>
 </article>
@@ -166,11 +260,57 @@
     details 
     {
         font-size:2vw;
+        
 
     }
-    .food-station
+    details :global
     {
-        font-size:1vh
+        .food-meal
+        {
+            padding-top: 4vh;
+            font-size:3vw;
+
+        }
+        
+        .food-station
+        {
+            padding-top: 4vh;
+            padding-bottom: 2vh;
+            font-size:2.5vw;
+
+        }
+        .food-item
+        {
+            /* padding-top: 2vh; */
+            word-wrap: break-word;
+            /* font-weight: bold; */
+        }
+        .food-mealtype
+        {
+            display:inline;
+            white-space: nowrap;
+        }
+        .food-allergen
+        {
+            display:inline;
+            white-space: nowrap;
+        }
+        .food-icon
+        {
+            width: 3vw;
+        }
+        .food-icon:hover
+        {
+            filter:grayscale(50%);
+        }
+    }
+    .food-icon
+    {
+        width: 3vw;
+    }
+    .food-icon:hover
+    {
+        filter:grayscale(50%);
     }
     
 </style>
