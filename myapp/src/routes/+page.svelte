@@ -1,7 +1,5 @@
-
 <script>
     
-
     function fetchMeals()
     {
         fetch('./mealsToday.jason')
@@ -15,9 +13,6 @@
             .then(data=> console.log(data))
             .catch(error=> console.error('Failed to fetch data:', error))
     }
-
-
-
 
     function openAllDetails()
     {
@@ -36,45 +31,63 @@
             elm[i].removeAttribute("open");
         }
     }
-    function getSouthsideMenu()
-    {
-        let something = document.getElementById("southside");
 
-    }
+    let allergens = ["Eggs","Gluten/Wheat","Milk","Soy","Sesame ","Fish","Shellfish","Pork","Coconut","Peanuts"]
+    let mealTypes = ["Vegetarian","Vegan","Vegan Option Available","Halal","Healthy Option","Gluten Friendly","Allergen-Friendly"];
+
     function convertMealtypeToIcon(mealtype)
     {
-        switch(mealtype)
-        {
-            case "Vegetarian":
-                return "<img src = \"/foodIcons/Vegetarian.png\" alt = \"Vegitarian Icon\" class = \"food-icon\" title = \"Vegetarian Item\">"
-            break;
-
-            case "Vegan":
-                return "<img src = \"/foodIcons/Vegan.png\" alt = \"Vegan Icon\" class = \"food-icon\" title = \"Vegan Item\">"
-            break;
-
-            case "Halal":
-                return "<img src = \"/foodIcons/Halal.png\" alt = \"Halal Icon\" class = \"food-icon\" title = \"Halal Item\">"
-            break;
-
-            case "Healthy Option":
-                return "<img src = \"/foodIcons/Healthy Option.png\" alt = \"Healthy Option Icon\" class = \"food-icon\" title = \"Healthy Option item\" style = \"width:3.6vw\">"
-            break;
-
-            case "Gluten Friendly":
-                return "<img src = \"/foodIcons/Gluten Friendly.png\" alt = \"Gluten Friendly Icon\" class = \"food-icon\" title = \"Gluten Friendly item\" style = \"width:3.6vw\">"
-            break;
-
-            case "Allergen-Friendly":
-                return "<img src = \"/foodIcons/Allergen-Friendly.png\" alt = \"Allergen-Friendly Icon\" class = \"food-icon\" title = \"Allergen-Friendly item\" style = \"width:3.6vw\">"
-            break;
-
-            default:
-                return mealtype + ", ";
-            break;
-        }
+        // if(mealtype == "Vegan Option Available")
+        // {
+        //     mealtype = "Vegan";
+        // }
+        mealtype = mealtype.replace("/","_");
+        return `<img src = \"/foodIcons/${mealtype}.png\" alt = \"${mealtype} Icon\" class = \"food-icon\" title = \"${mealtype}\">`
     }
-    function convertAllergenToIcon(mealtype)
+    // function convertMealtypeToIcon(mealtype)
+    // {
+    //     switch(mealtype)
+    //     {
+    //         case "Vegetarian":
+    //             return "<img src = \"/foodIcons/Vegetarian.png\" alt = \"Vegitarian Icon\" class = \"food-icon\" title = \"Vegetarian Item\">"
+    //         break;
+
+    //         case "Vegan":
+    //             return "<img src = \"/foodIcons/Vegan.png\" alt = \"Vegan Icon\" class = \"food-icon\" title = \"Vegan Item\">"
+    //         break;
+
+    //         case "Vegan Option Available":
+    //             return "<img src = \"/foodIcons/Vegan.png\" alt = \"Vegan Icon\" class = \"food-icon\" title = \"Vegan Option Available\">"
+    //         break;
+
+    //         case "Halal":
+    //             return "<img src = \"/foodIcons/Halal.png\" alt = \"Halal Icon\" class = \"food-icon\" title = \"Halal Item\">"
+    //         break;
+
+    //         case "Healthy Option":
+    //             return "<img src = \"/foodIcons/Healthy Option.png\" alt = \"Healthy Option Icon\" class = \"food-icon\" title = \"Healthy Option item\" style = \"width:3.6vw\">"
+    //         break;
+
+    //         case "Gluten Friendly":
+    //             return "<img src = \"/foodIcons/Gluten Friendly.png\" alt = \"Gluten Friendly Icon\" class = \"food-icon\" title = \"Gluten Friendly item\" style = \"width:3.6vw\">"
+    //         break;
+
+    //         case "Allergen-Friendly":
+    //             return "<img src = \"/foodIcons/Allergen-Friendly.png\" alt = \"Allergen-Friendly Icon\" class = \"food-icon\" title = \"Allergen-Friendly item\" style = \"width:3.6vw\">"
+    //         break;
+
+    //         default:
+    //             return mealtype + ", ";
+    //         break;
+    //     }
+    // }
+    function convertAllergenToIcon(mealtype)//can probably make these less hard coded, but switch statement fast
+    {
+        mealtype = mealtype.replace("/","_");
+        return `<img src = \"/foodIcons/${mealtype}.png\" alt = \"${mealtype} Icon\" class = \"food-icon\" title = \"Contains ${mealtype}\">`
+    }
+
+    function convertAllergenToIcon2(mealtype)//can probably make these less hard coded, but switch statement fast
     {
         switch(mealtype)
         {
@@ -123,11 +136,15 @@
             break;
         }
     }
+
+
+
+
+
     import mealsToday from '../mealsToday.json';
-    Object.keys( mealsToday);
-    
     let JSONmeals = mealsToday
     let entries = Object.entries(JSONmeals)
+
     //cafe string will not be sanitized, so this is an issue
     let cafeString = "";
     for (let meal in JSONmeals)
@@ -141,56 +158,32 @@
                 cafeString += `<div class = "food-item">${JSONmeals[meal][station]["menuItems"][menuItemIndex][0]}</div>`;
                 for(let mealType in JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0])
                 {
-                    //{@html convertMealtypeToIcon("Vegetarian")}
-                    //cafeString += JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0][mealType]+ ", ";
                     cafeString += `<div class = "food-mealtype">${convertMealtypeToIcon(JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0][mealType])}</div>`;
                 }
-                cafeString+="<br>";
+                let both = (JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1].length && JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0].length)
+                let neither = (JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1].length <= 0 && ~JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0].length<= 0)
+
+                if(JSONmeals[meal][station]["menuItems"][menuItemIndex][1][0].length>0 || neither)//xnor
+                {
+                    cafeString+="<br>";
+                }
                 for(let allergen in JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1])
                 {
-                    //cafeString += JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1][allergen] + ", ";
                     cafeString += `<div class = "food-allergen">${convertAllergenToIcon(JSONmeals[meal][station]["menuItems"][menuItemIndex][1][1][allergen])}`;
                 }
             }
-            //cafeString += JSONmeals[meal][station]["menuItems"][0]+ "<br>";
         }
-        // for (let something in mealsToday[station])
-        // {
-        //     cafeString += something;
-        // }
     }
-    //console.log(typeof mealsToday["Breakfast"]);
-    //let something = document.getElementsByClassName("cafe-menu");
-    for (let index in Object.keys(mealsToday))
-    {
-
-    }
-    //southsideMenu.innerHTML = cafeString;
-    
-
-    let src = "/foodIcons/Vegetarian.png"
-    //console.log(process.cwd())
 </script>
-
-<!--
- 
-
--->
-<!-- <img src = {src} alt = "Vegetarian Icon" class = "food-icon" title = "Vegetarian Item"> -->
-<!-- {@html string} @html tells it to double check for htmls -->
-<!--html does not sanatize string, so if someone else is entering it, then it could break everything: do escape yourself-->
 
 <button onclick = {openAllDetails} type = "button"> Open </button>
 <button onclick = {closeAllDetails} type = "button"> Close </button>
-
 
 <article class = c-wrapper>
     <details open>
         <summary class = "cafe-building">Southside Cafe</summary>
         <div class = "cafe-menu" id= "southside">
             {@html cafeString}
-
-            
         </div>
 
     </details>
@@ -198,35 +191,12 @@
         <summary class = "cafe-building">Southside Cafe</summary>
         <div class = "cafe-menu">
             {@html cafeString}
-            <!-- {JSON.stringify(mealsToday)} -->
         </div>
 
     </details>
     <details>
         <summary class = "cafe-building">Southside Cafe</summary>
-        <!-- <div class = "cafe-menu">
-            {#each mealsToday as thing}
-            <h1>{thing}</h1>
-        {/each}
-        {#each entries as meal}
-            {#each meal as mealthing,i}
-                {#if i==0}
-                    {mealthing}
-                    <br>
-                {:else}
-                    {#each mealthing as station, i}
-                        {#if i==1}
-                        {JSON.stringify(station)}
-                        {/if} 
-                    {/each}
-                {/if} 
-            {/each}
-            <br>
-            <br>
-
-        {/each}        </div> -->
         {@html cafeString}
-
     </details>
 </article>
 
@@ -267,23 +237,23 @@
     {
         .food-meal
         {
-            padding-top: 4vh;
-            font-size:3vw;
+            padding-top: 3vh;
+            font-size:4vw;
 
         }
         
         .food-station
         {
-            padding-top: 4vh;
+            padding-top: 2vh;
             padding-bottom: 2vh;
-            font-size:2.5vw;
+            font-size:3vw;
 
         }
         .food-item
         {
             /* padding-top: 2vh; */
             word-wrap: break-word;
-            /* font-weight: bold; */
+            font-weight: bold;
         }
         .food-mealtype
         {
@@ -301,16 +271,8 @@
         }
         .food-icon:hover
         {
-            filter:grayscale(50%);
+            filter:grayscale(75%);
         }
-    }
-    .food-icon
-    {
-        width: 3vw;
-    }
-    .food-icon:hover
-    {
-        filter:grayscale(50%);
     }
     
 </style>
